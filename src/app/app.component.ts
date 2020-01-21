@@ -1,10 +1,29 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { lorem } from "faker";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = 'typing';
+  randomText = lorem.sentence();
+  text = "";
+
+  onInput(value: string) {
+    this.text = value;
+  }
+  compare(randomLetter: string, enteredLetter: string) {
+    if (!enteredLetter) {
+      return "pending";
+    }
+    return randomLetter === enteredLetter ? "correct" : "incorrect";
+  }
+  // checkText() {
+  //   if (this.text == this.randomText) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 }
